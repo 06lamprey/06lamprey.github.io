@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
 import "react-image-lightbox/style.css";
 import useScrollPosition from "./hooks/useScrollPosition";
+import { useWindowSize } from "usehooks-ts";
 
 function SocialIcon({ icon, text, link }: { icon: IconDefinition; text: string; link?: string }) {
 	return (
@@ -34,9 +35,10 @@ function Site() {
 	const [imageShown, setImageShown] = useState<boolean | undefined>(false);
 	const [lockScroll, unlockScroll] = useScrollLock();
 	const position = useScrollPosition();
+	const { height } = useWindowSize();
 
 	return (
-		<div className="bg-slate-800">
+		<div className="bg-zinc-900">
 			{imageShown && (
 				<Lightbox
 					imagePadding={20}
@@ -55,22 +57,35 @@ function Site() {
 					onMoveNextRequest={() => selectImage((selectedImage + 1) % images.length)}
 				/>
 			)}
-			<div className="bg-gradient-to-b from-transparent to-slate-800 font-sans leading-6 font-poppins text-left text-lg bg-image underline-offset-4 bg-slate-900 text-white">
+			<div className="bg-gradient-to-b from-transparent font-sans leading-6 font-poppins text-left text-lg bg-image underline-offset-4 bg-zinc-900 text-white">
 				<div className="w-screen select-none h-screen flex flex-col lg:flex-row justify-center items-center">
-					<img className="rounded-full lg:mr-20" height={256} width={256} src="fuck.webp" />
+					<img
+						className="rounded-full lg:mr-20"
+						height={256}
+						width={256}
+						src="fuck.webp"
+						alt="profile icon"
+					/>
 					<div className="flex gap-4 p-4 items-center">
 						<div className="text-center lg:text-left">
 							<h1 className="font-semibold mb-4 text-6xl sm:text-8xl">Lamprey!</h1>
-							<p className="text-slate-600">he/it, VERY straight, 160cm asian</p>
+							<p className="text-zinc-400">he/it, VERY straight, 160cm asian</p>
 							<br />
-							<div className="text-slate-400 text-left md:mt-0 mt-10 p-2">
-								<p>Hi :33333 uwu am a siwwy wittwe modeller :333</p>
-								<p>i do like textures in substance painter and stuff.</p>
-								<p className="text-slate-700">
-									i can also like meow exactly like a cat... you wouldn't be able to tell :3
+							<div className="text-zinc-400 text-left md:mt-0 mt-10 p-2">
+								<p>Hi :33333 uwu am a siwwy wittwe freelance 3d artist :333</p>
+								<p>i do like textures in substance painter and stuff...</p>
+								<p>and like hard surface modelling... but you wouldnt get it (´ ∀ ` *)</p>
+								<br />
+
+								<p className="text-zinc-600">living in a regain2007 commercial</p>
+								<p className="text-zinc-600">ybpark 트리플 게이 (`△´＃)</p>
+								<p className="text-zinc-600">
+									can meow exactly like a cat... you wouldn't be able to tell :3
 								</p>
 
-								<div className="mt-10 text-left text-slate-400 text-1xl flex flex-col w-full">
+								<br />
+
+								<div className="mt-10 text-left text-zinc-400 text-1xl flex flex-col w-full">
 									<SocialIcon icon={faTwitter} text="akkihole" link="https://twitter.com/akkihole" />
 									<SocialIcon icon={faDiscord} text="Aphrodities#7193" />
 								</div>
@@ -79,15 +94,15 @@ function Site() {
 					</div>
 				</div>
 				<p
-					className="absolute bottom-10 text-center w-screen text-slate-600 italic ease-in-out duration-100"
+					className="absolute bottom-10 text-center w-screen text-zinc-600 italic ease-in-out duration-100"
 					style={{
-						opacity: position === 0 ? "100%" : "0%",
+						opacity: position === 0 && height > 850 ? "100%" : "0%",
 					}}
 				>
 					Scroll down siwwy!
 				</p>
 			</div>
-			<div className="bg-slate-800 p-8 pb-40 w-screen text-slate-200 max-w-screen-lg m-auto">
+			<div className="p-8 pb-40 w-screen text-zinc-200 max-w-screen-lg m-auto">
 				<h1 className="text-6xl mb-8">my models :3</h1>
 				<div className="w-full gap-2 grid md:grid-cols-2 lg:grid-cols-3">
 					{images.map((value, index) => (
@@ -116,6 +131,11 @@ function Site() {
 					))}
 				</div>
 			</div>
+			<img
+				src="cute.png"
+				alt="fox on the bottom"
+				className="invert from-transparent bg-gradient-to-b w-screen m-auto"
+			/>
 		</div>
 	);
 }
