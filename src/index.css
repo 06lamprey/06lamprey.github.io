@@ -5,15 +5,43 @@
 @tailwind utilities;
 
 :root {
-	--github-social: rgb(104, 108, 148);
-	--yt-social: rgb(251, 59, 59);
-	--email-social: #970012;
-	--telegram-social: #3867d5;
-	--disc-social: rgb(99, 99, 200);
+	--scroll-bg: #222222;
+	--scroll-thumb: #767676;
+	--scroll-thumb-hover: #555555;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--scroll-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--scroll-thumb);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--scroll-thumb-hover);
+}
+
+/* firefox scrollbar */
+* {
+	scrollbar-color: var(--scroll-thumb) var(--scroll-bg);
 }
 
 body {
 	margin: 0;
+}
+
+.svg-pattern {
+	background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='30' height='30' patternTransform='scale(3) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,0)'/><path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z' transform='translate(5,0)' stroke-width='0.5' stroke='hsla(259, 0%, 0%, 0.2)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+	background-repeat: repeat;
 }
 
 img {
@@ -29,7 +57,26 @@ img {
 	font-family: "Poppins", sans-serif;
 }
 
+.bg-image-wallpaper {
+	background-image: url("img/wallpaper.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
+}
+
+.react-photo-gallery--gallery div img {
+	transition: filter 0.2s ease-in-out;
+}
+
+.react-photo-gallery--gallery div img:hover {
+	filter: brightness(0.5);
+}
+
+.yarl__slide_image {
+	max-height: 90% !important;
+	max-width: 90% !important;
 }
